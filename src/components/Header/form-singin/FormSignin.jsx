@@ -2,8 +2,11 @@ import React from "react";
 import { ErrorMessage } from "@hookform/error-message";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { selectUsers } from "../../../store/features/auth/auth.slice";
 
 const FormSignin = ({ handleCloseIn, handleShowUp }) => {
+  const { users } = useSelector(selectUsers);
   const {
     register,
     formState: { errors },
@@ -12,17 +15,34 @@ const FormSignin = ({ handleCloseIn, handleShowUp }) => {
     criteriaMode: "all",
   });
   const onSubmit = (e) => {
-    handleCloseIn();
-    toast(" 🦄 wellcome tfruit! ", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+    console.log(e);
+    const userlogin = users.filter(
+      (user) => user.email == e.emailSignin && user.pass == e.passwordSignin
+    );
+    if (userlogin.length < 1) {
+      toast.error("Tài khoản hoặc mật khẩu không chính xác", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      handleCloseIn();
+      toast(" 🦄 wellcome tfruit! ", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
   return (
     <form

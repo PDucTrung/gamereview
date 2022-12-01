@@ -3,6 +3,7 @@
   padding: 10px 60px;
   position: fixed;
   z-index: 99;
+  top: 0;
 }
 
 .logo {
@@ -60,5 +61,13 @@
 
 .favorite-cart:hover {
   border: 1px solid green;
-  background-color: green
+  background-color: green;
+}
+
+.user {
+  font-size: 30px;
+}
+
+.user:hover {
+  color: green;
 }

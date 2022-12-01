@@ -7,7 +7,8 @@ import { selectfavorite } from "../../store/features/favorite/favorite.slice";
 import "./Favorite.css";
 
 const Favorite = () => {
-  const { items, removeItem, clearItem } = useSelector(selectfavorite);
+  const { items, removeItem, clearItem } =
+    useSelector(selectfavorite);
 
   const dispatch = useDispatch();
 

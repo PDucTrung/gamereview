@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { selectTotalfavoriteItem } from "../../store/features/favorite/favorite.slice";
 import "./HeadingHeader.css";
 import FormSignup from "./form-signup/FormSignup";
 import FormSignin from "./form-singin/FormSignin";
+import { useSelector } from "react-redux";
+import { selectUsers } from "../../store/features/auth/auth.slice";
 
 const HeadingHeader = () => {
+  const { users } = useSelector(selectUsers);
+  console.log(users);
+  const [login, setLogin] = useState(false);
   const [showIn, setShowIn] = useState(false);
   const [showUp, setShowUp] = useState(false);
 
@@ -37,27 +41,35 @@ const HeadingHeader = () => {
         <img src="./assets/warlord-helmet.png" alt="" />
       </NavLink>
       <div className="d-flex gap-3 align-items-center">
-        <div className="signin">
-          <div onClick={handleShowIn}>SIGN IN</div>
-          <Modal show={showIn} onHide={handleCloseIn}>
-            <Modal.Header closeButton></Modal.Header>
-            <Modal.Body>
-              <FormSignin
-                handleCloseIn={handleCloseIn}
-                handleShowUp={handleShowUp}
-              ></FormSignin>
-            </Modal.Body>
-          </Modal>
-        </div>
-        <div className="signup">
-          <div onClick={handleShowUp}>SIGN UP</div>
-          <Modal show={showUp} onHide={handleCloseUp}>
-            <Modal.Header closeButton></Modal.Header>
-            <Modal.Body>
-              <FormSignup handleCloseUp={handleCloseUp}></FormSignup>
-            </Modal.Body>
-          </Modal>
-        </div>
+        {login ? (
+          <NavLink className="text-white user text-decoration-none">
+            <i className="bi bi-person-circle"></i>
+          </NavLink>
+        ) : (
+          <div className="d-flex gap-3">
+            <div className="signin">
+              <div onClick={handleShowIn}>SIGN IN</div>
+              <Modal show={showIn} onHide={handleCloseIn}>
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body>
+                  <FormSignin
+                    handleCloseIn={handleCloseIn}
+                    handleShowUp={handleShowUp}
+                  ></FormSignin>
+                </Modal.Body>
+              </Modal>
+            </div>
+            <div className="signup">
+              <div onClick={handleShowUp}>SIGN UP</div>
+              <Modal show={showUp} onHide={handleCloseUp}>
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body>
+                  <FormSignup handleCloseUp={handleCloseUp}></FormSignup>
+                </Modal.Body>
+              </Modal>
+            </div>
+          </div>
+        )}
         <NavLink
           className="favorite-cart text-white position-relative"
           to={"/favorite"}

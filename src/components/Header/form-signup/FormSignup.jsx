@@ -2,6 +2,9 @@ import React from "react";
 import { ErrorMessage } from "@hookform/error-message";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../../store/features/auth/auth.slice";
+import { toast } from "react-toastify";
 
 const FormSignup = ({ handleCloseUp }) => {
   const {
@@ -12,9 +15,31 @@ const FormSignup = ({ handleCloseUp }) => {
     criteriaMode: "all",
     mode: "onBlur",
   });
+  const dispatch = useDispatch();
   const onSubmit = (e) => {
-    handleCloseUp();
-    Swal.fire("Sign Up success!", "", "success");
+    if (e.passSignup !== e.repassSignup) {
+      toast.error("Password and re-password phải giống nhau", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      dispatch(
+        addUser({
+          name: e.fullnameSignup,
+          email: e.emailSignup,
+          pass: e.passSignup,
+          islogin: false,
+        })
+      );
+
+      handleCloseUp();
+    }
   };
   return (
     <form

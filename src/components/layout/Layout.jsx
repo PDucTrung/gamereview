@@ -7,6 +7,7 @@ import {
   selectGamesStatus,
 } from "../../store/features/product/product.slice";
 import HeadingHeader from "../Header/HeadingHeader";
+import LoadAnimation from "../load/LoadAnimation";
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -18,10 +19,7 @@ const Layout = () => {
   return (
     <main className="app">
       {loading ? (
-        <div className="d-flex gap-3 align-items-center">
-          <div className="spinner-grow" role="status"></div>
-          <div>Loading</div>
-        </div>
+        <LoadAnimation></LoadAnimation>
       ) : (
         <div>
           <header>
