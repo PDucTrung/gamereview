@@ -1,0 +1,64 @@
+.heading-header {
+  width: 100%;
+  padding: 10px 60px;
+  position: fixed;
+  z-index: 99;
+}
+
+.logo {
+  width: 60px;
+  border-radius: 10px;
+}
+
+.logo img {
+  border-radius: 10px;
+}
+
+.signin,
+.signup {
+  cursor: pointer;
+  padding: 10px;
+  color: white;
+  transition: all 0.2s linear;
+}
+
+.signin:hover,
+.signup:hover {
+  background-color: white;
+  color: black;
+}
+
+.favorite-cart {
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.favorite-cart .number {
+  top: -7px;
+  right: -7px;
+  font-size: 15px;
+  background: white;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  border-radius: 50%;
+  font-weight: 500;
+  transition: all 0.2s linear;
+}
+
+.favorite-cart:hover {
+  border: 1px solid green;
+  background-color: green
+}

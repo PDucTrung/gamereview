@@ -1,0 +1,29 @@
+.list-favorite table {
+  margin: 0 auto;
+  border: 1px solid gray;
+  border-collapse: collapse;
+}
+
+tr,
+td,
+th {
+  border: 1px solid gray;
+}
+
+.list-favorite table td {
+  padding: 10px;
+}
+
+.btn {
+  float: right;
+  background-color: orange;
+  border: 2px solid orange;
+  color: white;
+  transition: all 0.2s linear;
+}
+
+.btn:hover {
+  background-color: white;
+  border: 2px solid orange;
+  color: orange;
+}

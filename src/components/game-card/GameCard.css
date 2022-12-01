@@ -1,0 +1,49 @@
+.game {
+  width: 365px;
+  height: 450px;
+  border: 1px solid gray;
+  transition: all 0.2s linear;
+}
+
+.game .name {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.game:hover {
+  border: 1px solid orange;
+}
+
+.game:hover .favorite {
+  opacity: 1;
+}
+
+.text-gray {
+  color: gray;
+}
+
+.favorite {
+  transition: all 0.2s linear;
+  cursor: pointer;
+  opacity: 0;
+  color: white;
+  background-color:orange;
+  border-radius: 50%;
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  right: -20px;
+  top: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  z-index: 10;
+}
+
+.favorite:hover {
+  color: green;
+  background-color: white;
+  border: 1px solid green;
+}

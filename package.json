@@ -1,0 +1,39 @@
+{
+  "name": "gamereivew",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@hookform/error-message": "^2.0.1",
+    "@reduxjs/toolkit": "^1.9.1",
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.2",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.6.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.40.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.4.3",
+    "react-toastify": "^9.1.1",
+    "sweetalert2": "^11.6.15"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "vite": "^3.2.3"
+  },
+  "description": "game",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "gamereview"
+  },
+  "author": "trung",
+  "license": "ISC"
+}
