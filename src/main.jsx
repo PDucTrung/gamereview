@@ -16,6 +16,7 @@ import store from "./store/store";
 import Layout from "./components/layout/Layout";
 import Detail from "./pages/detail/Detail";
 import Favorite from "./pages/favorite/Favorite";
+import User from "./pages/user/User";
 
 const routes = createRoutesFromElements(
   <Route
@@ -29,6 +30,7 @@ const routes = createRoutesFromElements(
       errorElement={<div>Something wrong :(</div>}
     />
     <Route path="/favorite" element={<Favorite />} />
+    <Route path="/user" element={<User />} />
     <Route path="*" element={<div>Page Not Found</div>} />
   </Route>
 );

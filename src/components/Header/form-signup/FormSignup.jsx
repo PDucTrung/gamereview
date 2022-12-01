@@ -34,7 +34,7 @@ const FormSignup = ({ handleCloseUp }) => {
           name: e.fullnameSignup,
           email: e.emailSignup,
           pass: e.passSignup,
-          islogin: false,
+          isAdmin: false,
         })
       );
 

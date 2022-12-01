@@ -2,14 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
-const initialState = [];
+const initialState = { data: [], login: false };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    addUser: (state, { payload: { name, email, pass, islogin } }) => {
-      const userEmail = state.findIndex((item) => item.email == email);
+    addUser: (state, { payload: { name, email, pass, isAdmin } }) => {
+      const userEmail = state.data.findIndex((item) => item.email == email);
       if (userEmail !== -1) {
         toast.error("Email đã tồn tại", {
           position: "top-right",
@@ -23,17 +23,30 @@ const authSlice = createSlice({
         });
       } else {
         Swal.fire("Sign Up success!", "", "success");
-        return [...state, { name, email, pass, islogin }];
+        return [...state.data, { name, email, pass, isAdmin }];
+      }
+    },
+    checkLogin: (isLogin) => {
+      if (isLogin) {
+        return {
+          login: true,
+        };
+      } else {
+        return {
+          login: false,
+        };
       }
     },
   },
 });
 
 export const authReducer = authSlice.reducer;
-export const { addUser } = authSlice.actions;
+export const { addUser, checkLogin } = authSlice.actions;
 export const selectUsers = (state) => {
   const users = state.auth;
   return {
     users,
   };
 };
+
+export const selectUserStatus = (state) => state.auth.login;

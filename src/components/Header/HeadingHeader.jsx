@@ -6,12 +6,14 @@ import "./HeadingHeader.css";
 import FormSignup from "./form-signup/FormSignup";
 import FormSignin from "./form-singin/FormSignin";
 import { useSelector } from "react-redux";
-import { selectUsers } from "../../store/features/auth/auth.slice";
+import {
+  selectUsers,
+  selectUserStatus,
+} from "../../store/features/auth/auth.slice";
 
 const HeadingHeader = () => {
   const { users } = useSelector(selectUsers);
-  console.log(users);
-  const [login, setLogin] = useState(false);
+  const login = useSelector(selectUserStatus);
   const [showIn, setShowIn] = useState(false);
   const [showUp, setShowUp] = useState(false);
 
@@ -42,7 +44,10 @@ const HeadingHeader = () => {
       </NavLink>
       <div className="d-flex gap-3 align-items-center">
         {login ? (
-          <NavLink className="text-white user text-decoration-none">
+          <NavLink
+            className="text-white user text-decoration-none"
+            to={"/user"}
+          >
             <i className="bi bi-person-circle"></i>
           </NavLink>
         ) : (

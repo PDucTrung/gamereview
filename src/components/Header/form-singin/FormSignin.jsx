@@ -2,10 +2,14 @@ import React from "react";
 import { ErrorMessage } from "@hookform/error-message";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-import { selectUsers } from "../../../store/features/auth/auth.slice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  checkLogin,
+  selectUsers,
+} from "../../../store/features/auth/auth.slice";
 
 const FormSignin = ({ handleCloseIn, handleShowUp }) => {
+  const dispatch = useDispatch();
   const { users } = useSelector(selectUsers);
   const {
     register,
@@ -15,7 +19,6 @@ const FormSignin = ({ handleCloseIn, handleShowUp }) => {
     criteriaMode: "all",
   });
   const onSubmit = (e) => {
-    console.log(e);
     const userlogin = users.filter(
       (user) => user.email == e.emailSignin && user.pass == e.passwordSignin
     );
@@ -31,6 +34,7 @@ const FormSignin = ({ handleCloseIn, handleShowUp }) => {
         theme: "light",
       });
     } else {
+      dispatch(checkLogin({ isLogin: true }));
       handleCloseIn();
       toast(" 🦄 wellcome tfruit! ", {
         position: "top-right",
