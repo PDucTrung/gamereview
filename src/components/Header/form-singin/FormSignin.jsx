@@ -1,5 +1,4 @@
 import React from "react";
-import { ErrorMessage } from "@hookform/error-message";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -76,19 +75,11 @@ const FormSignin = ({ handleCloseIn, handleShowUp }) => {
             },
           })}
         />
-        <ErrorMessage
-          errors={errors}
-          name="emailSignin"
-          render={({ messages }) => {
-            return messages
-              ? Object.entries(messages).map(([type, message]) => (
-                  <span className="form-message text-red" key={type}>
-                    {message}
-                  </span>
-                ))
-              : null;
-          }}
-        />
+        {errors.emailSignin && (
+          <span className="form-message text-red">
+            {errors.emailSignin.message}
+          </span>
+        )}
       </div>
       <div className="form-group">
         <label htmlFor="password" className="form-label">
@@ -109,19 +100,11 @@ const FormSignin = ({ handleCloseIn, handleShowUp }) => {
             },
           })}
         />
-        <ErrorMessage
-          errors={errors}
-          name="passwordSignin"
-          render={({ messages }) => {
-            return messages
-              ? Object.entries(messages).map(([type, message]) => (
-                  <span className="form-message text-red" key={type}>
-                    {message}
-                  </span>
-                ))
-              : null;
-          }}
-        />
+        {errors.passwordSignin && (
+          <span className="form-message text-red">
+            {errors.passwordSignin.message}
+          </span>
+        )}
       </div>
       <a href="#" className="link">
         Forward your password ?

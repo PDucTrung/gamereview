@@ -85,19 +85,11 @@ const FormSignup = ({ handleCloseUp }) => {
             },
           })}
         />
-        <ErrorMessage
-          errors={errors}
-          name="emailSignup"
-          render={({ messages }) => {
-            return messages
-              ? Object.entries(messages).map(([type, message]) => (
-                  <span className="form-message text-red" key={type}>
-                    {message}
-                  </span>
-                ))
-              : null;
-          }}
-        />
+        {errors.emailSignup && (
+          <span className="form-message text-red">
+            {errors.emailSignup.message}
+          </span>
+        )}
       </div>
       <div className="form-group">
         <label htmlFor="password" className="form-label">
@@ -118,19 +110,11 @@ const FormSignup = ({ handleCloseUp }) => {
             },
           })}
         />
-        <ErrorMessage
-          errors={errors}
-          name="passSignup"
-          render={({ messages }) => {
-            return messages
-              ? Object.entries(messages).map(([type, message]) => (
-                  <span className="form-message text-red" key={type}>
-                    {message}
-                  </span>
-                ))
-              : null;
-          }}
-        />
+        {errors.passSignup && (
+          <span className="form-message text-red">
+            {errors.passSignup.message}
+          </span>
+        )}
       </div>
       <div className="form-group">
         <label htmlFor="password_confirmation" className="form-label">
@@ -151,19 +135,11 @@ const FormSignup = ({ handleCloseUp }) => {
             },
           })}
         />
-        <ErrorMessage
-          errors={errors}
-          name="repassSignup"
-          render={({ messages }) => {
-            return messages
-              ? Object.entries(messages).map(([type, message]) => (
-                  <span className="form-message text-red" key={type}>
-                    {message}
-                  </span>
-                ))
-              : null;
-          }}
-        />
+        {errors.repassSignup && (
+          <span className="form-message text-red">
+            {errors.repassSignup.message}
+          </span>
+        )}
       </div>
       <button className="form-submit" id="sign-up">
         Sign up
