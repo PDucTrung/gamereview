@@ -11,35 +11,22 @@ const FormSignup = ({ handleCloseUp }) => {
     register,
     formState: { errors },
     handleSubmit,
+    getValues,
   } = useForm({
     criteriaMode: "all",
     mode: "onBlur",
   });
   const dispatch = useDispatch();
   const onSubmit = (e) => {
-    if (e.passSignup !== e.repassSignup) {
-      toast.error("Password and re-password phải giống nhau", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    } else {
-      dispatch(
-        addUser({
-          name: e.fullnameSignup,
-          email: e.emailSignup,
-          pass: e.passSignup,
-          isAdmin: false,
-        })
-      );
-
-      handleCloseUp();
-    }
+    dispatch(
+      addUser({
+        name: e.fullnameSignup,
+        email: e.emailSignup,
+        pass: e.passSignup,
+        isAdmin: false,
+      })
+    );
+    handleCloseUp();
   };
   return (
     <form
@@ -132,6 +119,11 @@ const FormSignup = ({ handleCloseUp }) => {
               value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
               message:
                 "Password must consist of at least 8 letters and contain at least one uppercase letter, one lowercase letter and one number.",
+            },
+            validate: {
+              match: (v) =>
+                v === getValues("passSignup") ||
+                "Mật khẩu nhập lại không chính xác",
             },
           })}
         />
